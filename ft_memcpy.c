@@ -1,6 +1,6 @@
 #include <string.h>
 
-int	check_overlap(void *dest, const void *src, size_t n)
+int	check_overlap(char *dest, char *src, size_t n)
 {
 	size_t	i;
 	size_t  j;
@@ -23,15 +23,18 @@ int	check_overlap(void *dest, const void *src, size_t n)
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
+	char	*strd;
+	char	*strs;
 
 	i = 0;
-	if (check_overlap(dest, src, n))
-		return (dest);
-	while (src[i] && dest[i] && i < n)
+	strd = (char*)dest;
+	strs = (char*)src;
+	if (check_overlap(strd, strs, n))
+		return ((void*)strd);
+	while (strs[i] && strd[i] && i < n)
 	{
-		dest[i] = src[i];
+		strd[i] = strs[i];
 		i++;
 	}
-	return (dest);
-}
+	return ((void*)strd);
 }
