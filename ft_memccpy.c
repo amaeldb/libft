@@ -16,7 +16,7 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 			return (&destPh[++i]);
 		i++;
 	}
-	if (i < n || srcPh[i] || destPh[i])
+	if (i < n || srcPh[i] || destPh[i])
 		return (NULL);
 	return (&destPh[i]);
 }
