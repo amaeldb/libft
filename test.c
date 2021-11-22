@@ -47,9 +47,12 @@ int main()
 		printf("ft_memset = SUCCESS\n");
 	else
 		printf("ft_memset = FAILURE\n");
-	free(ptr);
-	free(ptr1);
 
+	if (!ft_memcmp(bzero(ptr, 10),ft_bzero(ptr1, 10), 10) && !ft_memcmp(bzero(ptr, 2), ft_bzero(ptr1, 2), 30))
+		printf("ft_bzero = SUCCESS\n");
+	else
+		printf("ft_bzero = FAILURE\n");
+	
 	if (ret_check(strncmp("", "", 3), ft_strncmp("", "", 3)) && ret_check(strncmp("Helio Vorld", "Hello World", 4), ft_strncmp("Helio Vorld", "Hello World", 4)))
 		printf("ft_strncmp = SUCCESS\n");
 	else
