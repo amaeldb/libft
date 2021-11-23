@@ -42,17 +42,29 @@ int main()
 	else
 		printf("ft_strlen = FAILURE\n");
 
-	void *ptr = malloc(100), *ptr1 = malloc(100);
+	void *ptr = malloc(100), *ptr1 = malloc(100), *ptr2 = malloc(100), *ptr3 = malloc(100);
 	if (!ft_memcmp(memset(ptr, 10, 10),ft_memset(ptr1, 10, 10), 1) && !ft_memcmp(memset(ptr, 10, 2), ft_memset(ptr1, 10, 2), 30))
 		printf("ft_memset = SUCCESS\n");
 	else
 		printf("ft_memset = FAILURE\n");
 
-	if (!ft_memcmp(bzero(ptr, 10),ft_bzero(ptr1, 10), 10) && !ft_memcmp(bzero(ptr, 2), ft_bzero(ptr1, 2), 30))
+	bzero(ptr, 10);
+	ft_memset(ptr1, 0, 10);
+	bzero(ptr2, 0);
+	ft_bzero(ptr3, 0);
+	printf("%d\n", ft_memcmp(ptr, ptr1, 10));
+	if (!ft_memcmp(ptr, ptr1, 10) && !ft_memcmp(ptr2, ptr3, 1))
 		printf("ft_bzero = SUCCESS\n");
 	else
 		printf("ft_bzero = FAILURE\n");
 	
+	memset(ptr1, 67, 10);
+	memset(ptr3, 0, 4);
+	if (!ft_memcmp(memcpy(ptr, ptr1, 10),ft_memcpy(ptr2, ptr1, 10), 10) && !ft_memcmp(memcpy(ptr, ptr3, 4), ft_memcpy(ptr2, ptr3, 4), 4))
+		printf("ft_memcpy = SUCCESS\n");
+	else
+		printf("ft_memcpy = FAILURE\n");
+
 	if (ret_check(strncmp("", "", 3), ft_strncmp("", "", 3)) && ret_check(strncmp("Helio Vorld", "Hello World", 4), ft_strncmp("Helio Vorld", "Hello World", 4)))
 		printf("ft_strncmp = SUCCESS\n");
 	else

@@ -6,15 +6,15 @@
 /*   By: ade-beta <ade-beta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 13:41:13 by ade-beta          #+#    #+#             */
-/*   Updated: 2021/11/22 13:42:53 by ade-beta         ###   ########.fr       */
+/*   Updated: 2021/11/23 10:56:26 by ade-beta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-	size_t  i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])

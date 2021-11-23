@@ -6,7 +6,7 @@
 /*   By: ade-beta <ade-beta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 13:43:25 by ade-beta          #+#    #+#             */
-/*   Updated: 2021/11/22 13:43:39 by ade-beta         ###   ########.fr       */
+/*   Updated: 2021/11/23 13:49:41 by ade-beta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	check_overlap(char *dest, char *src, size_t n)
 {
 	size_t	i;
-	size_t  j;
+	size_t	j;
 
 	i = 0;
 	while (src[i] && i < n)
@@ -39,14 +39,14 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char	*strs;
 
 	i = 0;
-	strd = (char*)dest;
-	strs = (char*)src;
+	strd = (char *)dest;
+	strs = (char *)src;
 	if (check_overlap(strd, strs, n))
-		return ((void*)strd);
-	while (strs[i] && strd[i] && i < n)
+		return ((void *)strd);
+	while (i < n)
 	{
 		strd[i] = strs[i];
 		i++;
 	}
-	return ((void*)strd);
+	return (dest);
 }
