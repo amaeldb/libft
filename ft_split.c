@@ -1,32 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-beta <ade-beta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 15:26:35 by ade-beta          #+#    #+#             */
-/*   Updated: 2021/11/24 12:17:08 by ade-beta         ###   ########.fr       */
+/*   Created: 2021/11/24 12:22:36 by ade-beta          #+#    #+#             */
+/*   Updated: 2021/11/24 12:57:05 by ade-beta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+int	cspa(char *s, char c)
 {
-	int		i;
-	char	*ret;
+	int	count;
+	int	prev;
+	int	i;
 
-	ret = (char *)s;
-	i = ft_strlen(ret);
-	if (i == 0 && !c)
-		return (&ret[0]);
-	if (!c)
-		return (&ret[i]);
-	if (c && !i)
-		return (NULL);
-	while (ret[--i])
-		if (ret[i] == (char)c)
-			return (&ret[i]);
-	return (NULL);
+	i = -1;
+	prev = 0;
+	count = 0;
+	while (s[++i])
+	{
+		if ((s[i] == c && prev) || (!s[i + 1] && s[i] != c))
+		{
+			count++;
+			prev = 0;
+		}
+		else if (s[i] != c)
+			prev = 1;
+	}
+	return (count);
 }
+
+char	**malsub(char **ret, char *s, char c)
+
+char	**ft_split(const char *s, char c)
+{
+	int		count;
+	char	**ret;
+	int		i;
+
+	ret = malloc(sizeof(char *) * cspa(s, c) + 1);
+	if (!ret)
+		return (NULL);
+	

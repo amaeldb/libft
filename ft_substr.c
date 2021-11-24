@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-beta <ade-beta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 15:26:18 by ade-beta          #+#    #+#             */
-/*   Updated: 2021/11/24 12:16:21 by ade-beta         ###   ########.fr       */
+/*   Created: 2021/11/24 11:13:46 by ade-beta          #+#    #+#             */
+/*   Updated: 2021/11/24 12:17:41 by ade-beta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	int		i;
-	char	*ret;
+	size_t			i;
+	unsigned int	slen;
+	char			*ret;
 
-	i = -1;
-	ret = (char *)s;
-	while (ret[++i])
-		if (ret[i] == (char)c)
-			return (&ret[i]);
-	if (!c)
-		return (&ret[i]);
-	return (NULL);
+	i = 0;
+	slen = ft_strlen(s) - start;
+	if (slen > len)
+		ret = malloc(sizeof(char) * len + 1);
+	else
+		ret = malloc(sizeof(char) * slen + 1);
+	if (!ret)
+		return (NULL);
+	while (i < len && s[i + (size_t)start])
+	{
+		ret[i] = (char)s[i + start];
+		i++;
+	}
+	ret[i] = '\0';
+	return (ret);
 }
