@@ -6,7 +6,7 @@
 /*   By: ade-beta <ade-beta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 12:22:36 by ade-beta          #+#    #+#             */
-/*   Updated: 2021/11/24 12:57:05 by ade-beta         ###   ########.fr       */
+/*   Updated: 2021/11/29 12:57:17 by ade-beta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,74 @@ int	cspa(char *s, char c)
 	return (count);
 }
 
-char	**malsub(char **ret, char *s, char c)
+void	malsub(char **ret, char *s, char c)
+{
+	int	i;
+	int	j;
+	int	count;
+	int	prev;
+
+	i = -1;
+	j = -1;
+	prev = 0;
+	count = 1;
+	while (s[++i])
+	{
+		if (s[i] != c)
+		{
+			count++;
+			prev = 1;
+		}
+		if ((s[i] == c && prev) || (s[i + 1] == '\0' && prev))
+		{
+			ret[++j] = malloc(sizeof(char) * count);
+			prev = 0;
+			count = 1;
+		}
+	}
+}
+
+void	set_char(char *str, char c, char **ret)
+{
+	int	i;
+	int	j;
+	int	k;
+	int	is;
+
+	is = 1;
+	j = 0;
+	i = -1;
+	k = -1;
+	while (str[++i])
+	{
+		if (str[i] != c)
+		{
+			ret[j][++k] = str[i];
+			is = 0;
+		}
+		if ((str[i] == c && !is) || (str[i + 1] == '\0' && !is))
+		{
+			ret[j][++k] = '\0';
+			j++;
+			k = -1;
+			is = 1;
+		}
+	}
+}
 
 char	**ft_split(const char *s, char c)
 {
 	int		count;
 	char	**ret;
-	int		i;
 
-	ret = malloc(sizeof(char *) * cspa(s, c) + 1);
+	count = cspa((char *)s, c);
+	ret = malloc(sizeof(char *) * (count + 1));
 	if (!ret)
 		return (NULL);
-	
+	ret[count] = NULL;
+	malsub(ret, (char *)s, c);
+	if (ft_checkmal(ret, count))
+		return (NULL);
+	set_char((char *)s, c, ret);
+	return (ret);
+}

@@ -1,34 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checkmal.c                                      :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-beta <ade-beta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 13:55:21 by ade-beta          #+#    #+#             */
-/*   Updated: 2021/11/29 13:55:25 by ade-beta         ###   ########.fr       */
+/*   Created: 2021/11/29 14:11:14 by ade-beta          #+#    #+#             */
+/*   Updated: 2021/11/29 14:13:37 by ade-beta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_checkmal(char **str, int size)
+void	ft_putendl_fd(char *s, int fd)
 {
-	int	i;
-	int	f;
-
-	i = -1;
-	f = 0;
-	while (++i < size)
-		if (!str[i])
-			f = 1;
-	i = -1;
-	if (f)
-	{
-		while (++i < size)
-			free(str[i]);
-		free(str);
-		return (1);
-	}
-	return (0);
+	ft_putstr_fd(s, fd);
+	write(fd, "\n", 1);
 }

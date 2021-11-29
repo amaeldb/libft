@@ -6,7 +6,7 @@
 /*   By: ade-beta <ade-beta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 11:43:23 by ade-beta          #+#    #+#             */
-/*   Updated: 2021/11/24 12:21:59 by ade-beta         ###   ########.fr       */
+/*   Updated: 2021/11/29 13:59:51 by ade-beta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,21 @@ char	*ft_strtrim(const char *s1, const char *set)
 	int		i;
 
 	i = -1;
-	while (ft_strchr(set, (char)s1[++i]) != NULL)
+	cf = 0;
+	cb = 0;
+	while (ft_strchr(set, (char)s1[++i]) != NULL && s1[i])
 		cf++;
-	if (cf == ft_strlen(s1))
-	{
+	if (cf == (int)ft_strlen(s1))
 		return (nullret());
-	}
 	i = 0;
-	while (ft_strchr(set, (char)s1[ft_strlen(s1) - (++i)]) != NULL)
+	while (ft_strchr(set, (char)s1[ft_strlen(s1) - (++i)])
+		!= NULL && (int)ft_strlen(s1) != i)
 		cb++;
 	ret = malloc(ft_strlen(s1) - (cf + cb) + 1);
 	if (!ret)
 		return (NULL);
 	i = -1;
-	while (++i < (ft_strlen(s1) - (cf + cb)))
+	while (++i < (int)(ft_strlen(s1) - (cf + cb)))
 		ret[i] = (char)s1[i + cf];
 	ret[i] = '\0';
 	return (ret);

@@ -6,7 +6,7 @@
 /*   By: ade-beta <ade-beta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 11:13:46 by ade-beta          #+#    #+#             */
-/*   Updated: 2021/11/24 12:17:41 by ade-beta         ###   ########.fr       */
+/*   Updated: 2021/11/29 14:00:18 by ade-beta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,21 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 
 	i = 0;
 	slen = ft_strlen(s) - start;
-	if (slen > len)
+	if (start > ft_strlen(s))
+		ret = malloc(1);
+	else if (slen > len)
 		ret = malloc(sizeof(char) * len + 1);
 	else
 		ret = malloc(sizeof(char) * slen + 1);
 	if (!ret)
 		return (NULL);
-	while (i < len && s[i + (size_t)start])
+	if (start < ft_strlen(s))
 	{
-		ret[i] = (char)s[i + start];
-		i++;
+		while (i < len && s[i + (size_t)start])
+		{
+			ret[i] = (char)s[i + start];
+			i++;
+		}
 	}
 	ret[i] = '\0';
 	return (ret);
