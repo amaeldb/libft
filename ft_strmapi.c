@@ -6,7 +6,7 @@
 /*   By: ade-beta <ade-beta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 13:56:13 by ade-beta          #+#    #+#             */
-/*   Updated: 2021/11/29 13:56:14 by ade-beta         ###   ########.fr       */
+/*   Updated: 2021/12/01 17:00:12 by ade-beta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 	char	*ret;
 	int		i;
 
+	if (!s || !f)
+		return (NULL);
 	i = -1;
 	ret = malloc(ft_strlen(s) + 1);
 	if (!ret)

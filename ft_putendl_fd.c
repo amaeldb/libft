@@ -6,7 +6,7 @@
 /*   By: ade-beta <ade-beta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 14:11:14 by ade-beta          #+#    #+#             */
-/*   Updated: 2021/11/29 14:13:37 by ade-beta         ###   ########.fr       */
+/*   Updated: 2021/12/01 17:01:58 by ade-beta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
+	if (!s)
+		return ;
 	ft_putstr_fd(s, fd);
 	write(fd, "\n", 1);
 }

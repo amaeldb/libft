@@ -6,7 +6,7 @@
 /*   By: ade-beta <ade-beta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 11:29:18 by ade-beta          #+#    #+#             */
-/*   Updated: 2021/11/29 12:29:18 by ade-beta         ###   ########.fr       */
+/*   Updated: 2021/12/01 16:51:07 by ade-beta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	char	*ret;
 	int		i;
 
+	if (!s1 || !s2)
+		return (NULL);
 	i = -1;
 	ret = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!ret)

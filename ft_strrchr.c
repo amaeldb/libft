@@ -6,7 +6,7 @@
 /*   By: ade-beta <ade-beta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:26:35 by ade-beta          #+#    #+#             */
-/*   Updated: 2021/11/24 12:17:08 by ade-beta         ###   ########.fr       */
+/*   Updated: 2021/12/01 16:39:24 by ade-beta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strrchr(const char *s, int c)
 		return (&ret[i]);
 	if (c && !i)
 		return (NULL);
-	while (ret[--i])
+	while (ret[--i] && i > -1)
 		if (ret[i] == (char)c)
 			return (&ret[i]);
 	return (NULL);

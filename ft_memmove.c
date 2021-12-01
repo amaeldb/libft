@@ -6,7 +6,7 @@
 /*   By: ade-beta <ade-beta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 13:43:52 by ade-beta          #+#    #+#             */
-/*   Updated: 2021/11/23 13:49:14 by ade-beta         ###   ########.fr       */
+/*   Updated: 2021/12/01 17:06:20 by ade-beta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	char	*strd;
 	char	*strs;
 
-	i = 0;
+	if (!dest && !src)
+		return (NULL);
+	i = -1;
 	strd = (char *)dest;
 	strs = (char *)src;
 	if (dest > src)
@@ -32,11 +34,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	else
 	{
-		while (i < n)
-		{
+		while (++i < n)
 			strd[i] = strs[i];
-			i++;
-		}
 	}
 	return ((void *)strd);
 }

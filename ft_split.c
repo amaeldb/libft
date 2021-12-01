@@ -6,7 +6,7 @@
 /*   By: ade-beta <ade-beta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 12:22:36 by ade-beta          #+#    #+#             */
-/*   Updated: 2021/11/29 12:57:17 by ade-beta         ###   ########.fr       */
+/*   Updated: 2021/12/01 16:59:12 by ade-beta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ char	**ft_split(const char *s, char c)
 	int		count;
 	char	**ret;
 
+	if (!s)
+		return (NULL);
 	count = cspa((char *)s, c);
 	ret = malloc(sizeof(char *) * (count + 1));
 	if (!ret)

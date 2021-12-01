@@ -6,31 +6,11 @@
 /*   By: ade-beta <ade-beta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 13:43:25 by ade-beta          #+#    #+#             */
-/*   Updated: 2021/11/23 13:49:41 by ade-beta         ###   ########.fr       */
+/*   Updated: 2021/12/01 16:34:55 by ade-beta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	check_overlap(char *dest, char *src, size_t n)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (src[i] && i < n)
-	{
-		j = 0;
-		while (dest[j])
-		{
-			if (&src[i] == &dest[j])
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
@@ -38,12 +18,12 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char	*strd;
 	char	*strs;
 
+	if (!dest && !src)
+		return (NULL);
 	i = 0;
 	strd = (char *)dest;
 	strs = (char *)src;
-	if (check_overlap(strd, strs, n))
-		return ((void *)strd);
-	while (i < n)
+	while (i < n && strs[i])
 	{
 		strd[i] = strs[i];
 		i++;
