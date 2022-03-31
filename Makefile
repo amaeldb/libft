@@ -18,10 +18,6 @@ FLAGS	= -Wall -Wextra -Werror
 
 NAME	= libft.a
 
-#so: $(OBJS) $(OBJSB)
-#	gcc -nostartfiles -fPIC $(FLAGS) $(SRCS) $(SRCSB)
-#	gcc -nostartfiles -shared -o libft.so $(OBJS) $(OBJSB)
-
 .c.o:
 		gcc ${FLAGS} -c $< -o ${<:.c=.o}
 
