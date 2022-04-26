@@ -23,22 +23,22 @@ FLAGS	= -Wall -Wextra -Werror
 NAME	= libft.a
 
 .c.o:
-		gcc ${FLAGS} -c $< -o ${<:.c=.o}
+		@ gcc ${FLAGS} -c $< -o ${<:.c=.o}
 
 printf:	${OBJSP}
-		ar rc libft.a ${OBJSP}
+		@ ar rc libft.a ${OBJSP}
 
 all:	${OBJSP} ${OBJS} ${OBJSB}
-		ar rc libft.a ${OBJS} ${OBJSB} ${OBJSP}
+		@ ar rc libft.a ${OBJS} ${OBJSB} ${OBJSP}
 
 ${NAME}:	${OBJS} ${OBJSB}
-		ar rc libft.a ${OBJS} ${OBJSB}
+		@ ar rc libft.a ${OBJS} ${OBJSB}
 
 clean:
-		rm -f ${OBJS} ${OBJSB} ${OBJSP}
+		@ rm -f ${OBJS} ${OBJSB} ${OBJSP}
 
 fclean:		clean
-			rm -f ${NAME}
+			@ rm -f ${NAME}
 
 re:		fclean
-		make all
+		@ make all
