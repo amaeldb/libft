@@ -36,5 +36,4 @@ clean:
 fclean:		clean
 			@ rm -f ${NAME}
 
-re:		fclean
-		@ make all
+re:		fclean all
