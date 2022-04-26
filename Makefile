@@ -8,9 +8,13 @@ SRCS	= 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strl
 SRCSB	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
 			ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
+SRCSP	=	conv1.c conv2.c ft_printf.c
+
 OBJS	= ${SRCS:.c=.o}
 
 OBJSB	= ${SRCSB:.c=.o}
+
+OBJSP	= ${SRCSP:.c=.o}
 
 HEAD	= includes/libft.h
 
@@ -21,16 +25,17 @@ NAME	= libft.a
 .c.o:
 		gcc ${FLAGS} -c $< -o ${<:.c=.o}
 
-all:	${NAME}
+printf:	${OBJSP}
+		ar rc libft.a ${OBJSP}
 
-bonus:	${OBJS} ${OBJSB}
+all:	${OBJSP} ${OBJS} ${OBJSB}
+		ar rc libft.a ${OBJS} ${OBJSB} ${OBJSP}
+
+${NAME}:	${OBJS} ${OBJSB}
 		ar rc libft.a ${OBJS} ${OBJSB}
 
-${NAME}:	${OBJS}
-		ar rc libft.a ${OBJS}
-
 clean:
-		rm -f ${OBJS} ${OBJSB}
+		rm -f ${OBJS} ${OBJSB} ${OBJSP}
 
 fclean:		clean
 			rm -f ${NAME}
