@@ -25,14 +25,10 @@ NAME	= libft.a
 .c.o:
 		@ gcc ${FLAGS} -c $< -o ${<:.c=.o}
 
-printf:	${OBJSP}
-		@ ar rc libft.a ${OBJSP}
+all:	 ${NAME}
 
-all:	${OBJSP} ${OBJS} ${OBJSB}
+${NAME}:	${OBJS} ${OBJSB} ${OBJSP}
 		@ ar rc libft.a ${OBJS} ${OBJSB} ${OBJSP}
-
-${NAME}:	${OBJS} ${OBJSB}
-		@ ar rc libft.a ${OBJS} ${OBJSB}
 
 clean:
 		@ rm -f ${OBJS} ${OBJSB} ${OBJSP}
